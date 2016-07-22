@@ -1,0 +1,109 @@
+
+<section id="map">
+    <div class="container inner">
+        <div class="row filter_sec">
+
+            <div class="col-sm-4 col-xs-4">
+                <a class="btn list_view" href="#/merchants-maps-list">
+                    <i class="fa fa-th-large"></i>
+                </a>
+            </div>
+
+            <div class="col-sm-4 col-xs-4">
+                <button type="button" class="btn category" data-toggle="modal" data-target="#catogary">Category</button>
+            </div>
+            <div class="col-sm-4 col-xs-4">
+                <button type="button" class="btn filter_btn" data-toggle="modal" data-target="#filter">Filter <i class="fa fa-filter"></i></button>
+            </div> 
+        </div>
+
+        <div class="row list_sec" ng-if="results.length == 0">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+                <span class="no-date">No Merchant Found</span>
+            </div>
+        </div>
+
+         <div id="map-tab" class="row" >
+            <div class="col-sm-12 no-padding">
+                <div id="map-canvas" style="height: 400px; width: 100%;"></div>
+            </div>
+        </div>
+ 
+
+        
+    </div>
+    <div id="catogary" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Category List</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="category_list">
+                        <li><a href="javascropt:void(0);" ng-click="category('All')">All</a></li>
+                        <li><a href="javascropt:void(0);" ng-click="category('Restaurants & Cafes')">Restaurants & Cafes</a></li>
+                        <li><a href="javascropt:void(0);" ng-click="category('Retail')">Retail</a></li>
+                        <li><a href="javascropt:void(0);" ng-click="category('Health & Fitness')">Health & Fitness</a></li>
+                        <li><a href="javascropt:void(0);" ng-click="category('Service')">Service</a></li>
+                        <li ng-repeat="cat in categories" ng-if="categories"><a href="javascropt:void(0);" ng-click="category(cat)">{{cat}}</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div id="filter" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Filter</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <form name="searchForm" class="col-md-12">
+
+                            <div class="col-md-offset-3 col-sm-offset-2 col-xs-offset-1 col-md-6 col-sm-8 col-xs-10">
+                                <div class="search_filter">
+                                    <h2>Find Local Businesses</h2>
+                                    <p>Enter a location or business name and instantly find local vendors in your area.</p>
+                                    <div class="form-group">
+                                        <label for="cityState">Zip OR City, State</label>
+                                        <input type="text" class="form-control" id="cityState" placeholder="Zip OR City, State" ng-model="searchItem.cityState">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr">Merchant Name</label>
+                                        <input type="text" class="form-control" name="name" id="usr" placeholder="Merchant Name" ng-model="searchItem.name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="distance" class="control-label">Select Option</label>
+                                        <div class="select_sec">
+                                            <select id="distance" class="form-control" ng-model="searchItem.distance">
+                                                <option>Select Radius</option>
+                                                <option>5</option>
+                                                <option>10</option>
+                                                <option>25</option>
+                                                <option>50</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" ng-click="search()" style="margin: 0px; display: block; width: 100%; opacity: 1;" class="btn btn-blue col-sm-12 animated ng-click-active">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</section>

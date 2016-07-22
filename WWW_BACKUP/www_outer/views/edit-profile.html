@@ -1,0 +1,121 @@
+<style type="text/css">
+    .ngdialog-overlay{
+        z-index: -1;
+    }
+</style>
+
+<div>
+    <section id="edit_profile">
+        <div class="container inner">
+            <div class="panel-body">
+                
+                <form class="form-horizontal" enctype="multipart/form-data" name="editProfile" id="editProfile" data-parsley-validate="" novalidate>
+
+                    <div class="row">
+                        <div class="col-sm-4 col-md-3 profile-img-sec">
+                            <div class="row">
+                                <div class="img-sec">
+                                      <div id="largeImage" class="profile-image"><img ng-src="{{profileImage}}" class="img-responsive img-thumbnail" id="profileImageLoad"></div>
+                                </div>
+                                <div class="btn-sec">
+                                     <div class="img-btn-sec">
+                                         <input type="hidden" name="newimage" id="newimage" ng-model="loggedInMemInfo.newimage" />
+                                         <label>Change Image </label>
+                                            <!--<div class="input-group p-file-upload pfu">
+                                            <input type="file" name="tphoto" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" required>
+                                                </div>
+                                            <button class="btn btn-sm btn-info"  ng-click="capturePhoto()">Click Photo</button>-->
+                                            <div class="btn-div">
+                                                <input class="btn btn-sm btn-info" name="button" type="button" ng-click="capturePhoto()" value="Take Photo"/>
+
+                                                <input class="btn btn-sm btn-info" name="button" type="button" ng-click="getPhoto();" value="Browse" />
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                        <div class="col-sm-8 col-md-9">
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">First Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="name" placeholder="First Name" class="form-control" ng-model="loggedInMemInfo.name" required>
+                                    <span style="color:red" ng-show="editProfile.name.$dirty && editProfile.name.$invalid">
+                                        <span ng-show="editProfile.name.$error.required">First Name is required.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Last Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="lname" placeholder="Last Name" class="form-control" ng-model="loggedInMemInfo.lname" required>
+                                    <span style="color:red" ng-show="editProfile.lname.$dirty && editProfile.lname.$invalid">
+                                        <span ng-show="editProfile.lname.$error.required">Last Name is required.</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Date Of Birth</label>
+                                <div class="col-sm-8">
+                                    <input id="Dob_tab2" type="text" name="dob" placeholder="Date Of Birth" ng-model="loggedInMemInfo.dob" class="form-control" required>
+                                    <span style="color:red" ng-show="editProfile.dob.$dirty && editProfile.dob.$invalid">
+                                        <span ng-show="editProfile.dob.$error.required">Date of Birth Name is required.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Address</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="addr" placeholder="Address" class="form-control" required ng-model="loggedInMemInfo.addr"><br /> 
+                                    <span style="color:red" ng-show="editProfile.addr.$dirty && editProfile.addr.$invalid">
+                                        <span ng-show="editProfile.addr.$error.required">First Name is required.</span>
+                                    </span>
+                                    <input type="text" name="addr2" placeholder="addr 2" class="form-control"  ng-model="loggedInMemInfo.addr2"><br /> 
+                                    <input type="text" name="city" placeholder="City" class="form-control" required ng-model="loggedInMemInfo.city"><br /> 
+                                    <span style="color:red" ng-show="editProfile.city.$dirty && editProfile.city.$invalid">
+                                        <span ng-show="editProfile.city.$error.required">City is required.</span>
+                                    </span>
+                                    <input type="text" name="state" placeholder="State" class="form-control" required ng-model="loggedInMemInfo.state"><br /> 
+                                    <span style="color:red" ng-show="editProfile.state.$dirty && editProfile.state.$invalid">
+                                        <span ng-show="editProfile.state.$error.required">State is required.</span>
+                                    </span>
+                                    <input type="text" name="zip" placeholder="zip" class="form-control" required ng-model="loggedInMemInfo.zip" data-parsley-minlength="5"  data-parsley-type="integer">
+                                    <span style="color:red" ng-show="editProfile.zip.$dirty && editProfile.zip.$invalid">
+                                        <span ng-show="editProfile.zip.$error.required">Zip is required.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Email</label>
+                                <div class="col-sm-8">
+                                    <input type="email" name="email" value="" placeholder="Email" class="form-control" required data-parsley-type="email" ng-model="loggedInMemInfo.email">
+                                    <span style="color:red" ng-show="editProfile.email.$dirty && editProfile.email.$invalid">
+                                        <span ng-show="editProfile.email.$error.required">Email is required.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Phone</label>
+                                <div class="col-sm-8">
+                                    <input type="tel" name="ph" value="" placeholder="Phone" class="form-control" required  data-parsley-length="[6, 13]"  data-parsley-type="integer" ng-model="loggedInMemInfo.ph" pattern="[0-9]{10,13}">
+                                    <span style="color:red" ng-show="editProfile.ph.$dirty && editProfile.ph.$invalid">
+                                        <span ng-show="editProfile.ph.$error.required">Phone Number is required.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <div class="update_btn">
+                                        <button name="edit" type="submit" id="edit" class="btn btn-sm btn-info" value="Update" ng-click="updateMemberProfile(loggedInMemInfo)" ng-disabled="editProfile.$invalid">Update</button>      
+                                        <button class="btn btn-sm btn-info" ng-click="cancelUpadate()" value="Cancel" >Cancel</button> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                       
+                </form>
+            </div>
+        </div>
+    </section>
+</div>

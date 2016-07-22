@@ -1,0 +1,43 @@
+<section id="merDetail">
+    <div class="container inner">
+
+        <div class="row list_sec" ng-if="info.data == 0">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 text-center">
+                There is no data available for Organization!
+            </div>
+        </div> 
+
+        <div class="page-header">
+            <a href="javascript:void(0);" ng-click="goBackFromDetail()"><span class="goToBackBtn"><i class="fa fa-arrow-left"></i></span></a>
+            <h1 ng-if="info.data.merchant.oname != ''">{{info.data.orgdetail.oname}}</h1>      
+        </div>
+        <div class="row">
+            <div class="top_detail_sec clearfix">   
+                <div class="images_sec">
+                    <img ng-src="{{orgProfileImgUrl}}{{info.data.orgdetail.logo}}" alt="" ng-if="info.data.orgdetail.logo != ''">
+                    <img ng-src="{{imageUrl}}defaultorg.png" alt="" ng-if="info.data.orgdetail.logo == '' ">
+                </div>
+            
+                <div class="address_sec">
+                    <div class="add_sec address">
+                        <label>Address :</label><span>{{info.data.orgdetail.addr}} {{info.data.orgdetail.addr2}} ,{{info.data.orgdetail.city}} {{info.data.orgdetail.zip}}</span>
+                    </div>
+                    <div class="add_sec phone">
+                        <label>Business Phone :</label><span>{{info.data.orgdetail.bphone}}</span>
+                    </div>
+                    <div class="add_sec wesite">
+                        <label>Website :</label><a href="javascript:void(0);" ng-click="openLinkInApp()" ng-if="info.data.orgdetail.website != ''">{{info.data.orgdetail.website}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-if="info.data.orgdetail.benefitDescription != '' ">
+            <div class="desc">
+                <label>Description</label>
+                <p>{{info.data.orgdetail.benefitDescription}}</p>
+            </div>
+        </div>
+
+    </div> <!-- container inner ends -->
+</section> 

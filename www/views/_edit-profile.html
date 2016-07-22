@@ -1,0 +1,111 @@
+<div>
+    <section id="edit_profile">
+        <div class="container inner">
+            <div class="panel-body">
+                
+                <form class="form-horizontal" enctype="multipart/form-data" name="Host_join" id="Host_join" data-parsley-validate="" novalidate>
+
+                    <div class="row">
+                        <div class="col-sm-4 col-md-3 profile-img-sec">
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-6 img-sec">
+                                      <div id="largeImage" class="profile-image"><img src="{{profileImage}}" class="img-responsive img-thumbnail"></div>
+                                </div>
+                                <div class="col-sm-6 col-xs-6 btn-sec">
+                                     <div class="img-btn-sec">
+                                         <input type="hidden" name="oldimage" value="<?php echo $row['photo'];?>" />
+                                         <label>Change Image </label>
+                                            <!--<div class="input-group p-file-upload pfu">
+                                            <input type="file" name="tphoto" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" required>
+                                                </div>
+                                            <button class="btn btn-sm btn-info"  ng-click="capturePhoto()">Click Photo</button>-->
+                                            <div class="btn-div">
+                                                <input class="btn btn-sm btn-info" name="button" type="button" onclick="capturePhoto()" value="Take Photo"/>
+
+                                                <input class="btn btn-sm btn-info" name="button" type="button" onclick="getPhoto();" value="Browse" />
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                          
+
+                           
+                            
+                            <!-- <div class="input-group p-file-upload">
+<input type="text" class="form-control file-name" disabled>
+<span class="input-group-btn">
+<div class="btn btn-default file-input">
+<span class="glyphicon glyphicon-folder-open"></span>
+<span id="file-btn-text"> Choose file</span>
+<input type="fil e" name="tphoto" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" >
+</div>
+</span>
+</div> -->
+
+
+                        </div>
+                        <div class="col-sm-8 col-md-9">
+
+
+                            
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">First Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="name" placeholder="First Name" class="form-control" ng-model="loggedInMemInfo.name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Last Name</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="lname" placeholder="Last Name" class="form-control" ng-model="loggedInMemInfo.lname" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Date Of Birth</label>
+                                <div class="col-sm-8">
+                                    <input id="Dob_tab2" type="text" name="dob" placeholder="Date Of Birth" ng-model="loggedInMemInfo.dob" class="form-control" required>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Address</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="addr" placeholder="Address" class="form-control" required ng-model="loggedInMemInfo.addr"><br /> 
+                                    <input type="text" name="addr2" placeholder="addr 2" class="form-control"  ng-model="loggedInMemInfo.addr2"><br /> 
+                                    <input type="text" name="city" placeholder="city" class="form-control" required ng-model="loggedInMemInfo.city"><br /> 
+                                    <input type="text" name="state" placeholder="State" class="form-control" required ng-model="loggedInMemInfo.state"><br /> 
+                                    <input type="text" name="zip" placeholder="zip" class="form-control" required ng-model="loggedInMemInfo.zip" data-parsley-minlength="5"  data-parsley-type="integer">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Email</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="email" value="" placeholder="Email" class="form-control" required data-parsley-type="email" ng-model="loggedInMemInfo.email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Address" class="col-sm-4 control-label">Phone</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="ph" value="" placeholder="Phone" class="form-control" required  data-parsley-length="[6, 13]"  data-parsley-type="integer" ng-model="loggedInMemInfo.ph">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>                       
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class=" pull-right">
+                                <button name="edit" type="submit" id="edit" class="btn btn-sm btn-info" value="Update" ng-click="updateMemberProfile(loggedInMemInfo)">Update</button>      <button class="btn btn-sm btn-info" ng-click="cancelUpadate()" value="Cancel" >Cancel</button> 
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>

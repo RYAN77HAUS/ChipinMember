@@ -1,0 +1,128 @@
+<section id="map">
+    <div class="container inner">
+        <div class="row filter_sec">
+
+            <div class="col-sm-4 col-xs-4">
+                <a class="btn list_view" href="#/merchants-maps" >
+                    <i class="fa fa-map-marker"></i>
+                </a>
+            </div>
+
+            <div class="col-sm-4 col-xs-4">
+                <button type="button" class="btn category" data-toggle="modal" data-target="#category">Category</button>
+            </div>
+            <div class="col-sm-4 col-xs-4">
+                <button type="button" class="btn filter_btn" data-toggle="modal" data-target="#filter">Filter <i class="fa fa-filter"></i></button>
+            </div> 
+        </div>
+
+        <div class="row list_sec" ng-if="obLength(results) == 0">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 text-center noData">
+                No Merchant Found!
+            </div>
+        </div> 
+
+        <div id="list-tab" class="row list_sec" >
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="merchant in results">
+                <div class="media box_list list-box">
+                    <div class="media-left">
+                        <a href="javascript:void(0);">
+                            <img class="media-object" ng-src="{{imageUrl}}defaultshop.png" alt="" ng-if="merchant.logo == '' ">
+                            <img class="media-object" ng-src="{{logoUrl}}{{merchant.logo}}" alt="" ng-if="merchant.logo != '' ">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <a href="#/merchants-detail/{{merchant.id}}">
+                            <h3 class="name">{{merchant.com}}</h3>
+                            <h3 class="distance"><span class="merDistance" ng-if="merchant.distance != ''">{{merchant.distance}}mi</span></h3>
+                            <h3 class="merphone" ng-if="merchant.ph != '' "><label>Phone:</label><span>{{merchant.ph}}</span></h3>
+                            <h3 class="meraddress" ng-if="merchant.addr != '' "><label>Address:</label><span>{{merchant.addr}}</span><span class="meraddress2" ng-if="merchant.addr2 != '' ">, {{merchant.addr2}}</span><span class="city" ng-if="merchant.city != '' ">, {{merchant.city}}</span><span class="state" ng-if="merchant.state != '' ">, {{merchant.state}}</span><span class="zip" ng-if="merchant.zip != '' ">, {{merchant.zip}}</span></h3>
+                            
+                        </a>
+                    </div>
+                </div>
+            </div>
+             
+        </div>
+
+        
+    </div>
+    <div id="category" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Category List</h3>
+                </div>
+                <div class="modal-body">
+                    <ul class="category_list">
+                        <li><a href="javascropt:void(0);" ng-click="category('0')">All</a></li>
+                        <li><a href="javascropt:void(0);" ng-click="category('Restaurants & Cafes')">Restaurants & Cafes</a></li>
+                        <li><a href="javascropt:void(0);" ng-click="category('Retail')">Retail</a></li>
+                        <li><a href="javascropt:void(0);" ng-click="category('Health & Fitness')">Health & Fitness</a></li>
+                        <li><a href="javascropt:void(0);" ng-click="category('Service')">Service</a></li>
+                        <li ng-repeat="cat in categories" ng-if=" cat != ' ' "><a href="javascropt:void(0);" ng-click="category(cat)" >{{cat}}</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div id="filter" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3>Find Local Businesses</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <form name="searchForm" class="col-md-12" novalidate>
+
+                            <div class="col-md-offset-3 col-sm-offset-2 col-md-6 col-sm-8 col-xs-12">
+                                <div class="search_filter">
+                                    
+                                    <p>Enter a location or business name and instantly find local vendors in your area.</p>
+                                    <div class="form-group">
+                                        <label for="cityState">Zip OR City, State</label>
+                                        <input type="text" class="form-control" id="cityState" name="cityState" placeholder="Zip OR City, State" ng-model="searchItem.cityState">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr">Merchant Name</label>
+                                        <input type="text" class="form-control" name="name" id="usr" placeholder="Merchant Name" ng-model="searchItem.name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="distance" class="control-label">Select Radius</label>
+                                        <div class="select_sec">
+                                            <select id="distance" name="distance" class="form-control" ng-model="searchItem.distance" >
+                                                <option value="5">5</option>
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                            </select>
+                                        </div>
+                                        <span style="color:red" ng-show="searchForm.distance.$dirty && searchForm.distance.$invalid" >
+                                            <span ng-show="searchForm.distance.$error.required">Please select the distance.</span>
+                                        </span>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" ng-click="reset()" style="margin: 0px; display: block; width: 48%; opacity: 1;float: left;margin-right: 10px;" class="btn btn-blue col-sm-12 animated" ng-disabled="searchForm.$invalid">Reset</button>
+                                        <button type="button" ng-click="search()" style="margin: 0px; display: block; width: 48%; opacity: 1;" class="btn btn-blue col-sm-12 animated" ng-disabled="searchForm.$invalid">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,38 @@
+
+<section id="login-sec">
+    <div class="container inner">
+        <div class="reg-process"> 
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="animated fadeInUp" role="form" name="login" novalidate ng-submit="loginMember(fields)">
+                        <h2 class="loginBox-title">Login</h2> 
+                        <div class="form-group">
+                            <label for="username">User Name:</label> 
+                            <input type="text" class="form-control" id="username" name="username"  placeholder="User Name" autocomplete="on" ng-model="fields.username"  required/>
+                            <span style="color:red" ng-show="login.username.$dirty && login.username.$invalid">
+                                <span ng-show="login.username.$error.required">Username is required.</span>
+                            </span>
+                        </div> 
+                        <div class="form-group"> 
+                            <label for="userPass">Password:</label> 
+                            <input type="password" class="form-control" id="userPass" name="password"  placeholder="Password" ng-model="fields.password"  required>
+                            <span style="color:red" ng-show="login.password.$dirty && login.password.$invalid">
+                                <span ng-show="login.password.$error.required">Password is required.</span>
+                            </span>
+                        </div> 
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-default" value="Sign In" ng-disabled="login.$invalid" >
+                        </div>
+                        <!-- <div class="form-group"><input type="submit" name="sign" class="btn btn-default" value="Sign In" > -->
+                            <!-- <span style="color:red" ng-show="info && !info.success"> {{info.error}}</span> -->
+                        <!-- </div> -->
+                    </form>
+                    <div class="links-sec">
+                        <a href="#/forget-password" class="log-label1"> Forget Password? </a><br>
+                        <!-- <a data-toggle="modal" href="#registerModal" class="log-label1"> Not a Member Yet? Join Now </a> -->
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</section>

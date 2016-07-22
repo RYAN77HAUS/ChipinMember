@@ -1,0 +1,77 @@
+<section id="merDetail">
+    <div class="container inner">
+
+        <div class="row list_sec" ng-if="info.data == 0">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 text-center">
+                There is no data available for Merchant.
+            </div>
+        </div> 
+
+        <div class="page-header">
+            <a href="javascript:void(0);" ng-click="goBackFromDetail()"><span class="goToBackBtn"><i class="fa fa-arrow-left"></i></span></a>
+            <h1 ng-if="info.data.merchant.com != ''">{{info.data.merchant.com}}</h1>      
+        </div>
+        <div class="row">
+            <div class="top_detail_sec clearfix">   
+                <div class="images_sec">
+                    <img ng-src="{{logoUrl}}{{info.data.merchant.logo}}" alt="" ng-if="info.data.merchant.logo != '' ">
+                    <img ng-src="{{imageUrl}}defaultshop.png" alt="" ng-if="info.data.merchant.logo == '' || info.data.merchant.logo == ' '"> 
+                </div>
+            
+                <div class="address_sec">
+                    <div class="add_sec address">
+                        <label>Address :</label><span>{{info.data.merchant.addr}} {{info.data.merchant.addr2}}</span>
+                    </div>
+                    <div class="add_sec phone">
+                        <label>Business Phone :</label><span>{{info.data.merchant.ph}}</span>
+                    </div>
+                    <div class="add_sec wesite">
+                        <label>Website :</label><a href="javascript:void(0);" ng-click="openLinkInApp()">{{info.data.merchant.website}}</a>
+                    </div>
+                    <div class="add_sec cash-back">
+                        <label>Cash Back :</label><span ng-if="info.data.merchant.nonvipper != '' ">{{info.data.merchant.nonvipper}}%</span><span ng-if="info.data.merchant.nonvipper == '' ">0%</span>
+                    </div>
+                    <div class="add_sec vip-cash-back">
+                        <label>VIP Cash Back :</label><span ng-if="info.data.merchant.vipper != '' ">{{info.data.merchant.vipper}}%</span><span ng-if="info.data.merchant.vipper == '' ">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-if="info.data.merchant.benefitDescription != '' ">
+            <div class="desc">
+                <label>Description</label>
+                <p>{{info.data.merchant.benefitDescription}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="product_section clearfix">
+                <div class="related_pro" ng-repeat="product in info.data.product" ng-if="info.data.product">
+                    <div class="pro_img">
+                        <img src="{{productUrl}}{{product.prodimage}}" alt="{{product.pname}}">
+                    </div>
+                    <div class="pro_detail">
+                        <h4 class="pro_name">{{product.pname}}</h4>
+                        <div class="price_detail">
+                            <div class="detail_sec price">
+                                <label>Price :</label><span ng-if="product.price != '' ">$ {{product.price}}</span>
+                            </div>
+                            <div class="detail_sec price">
+                                <label>Cash Back :</label><span ng-if="product.nonvipper != '' ">{{product.nonvipper}}%</span><span ng-if="product.nonvipper == '' ">0%</span>
+                            </div>
+                            <div class="detail_sec price">
+                                <label>VIP Cash Back :</label><span ng-if="product.vipper != '' ">{{product.vipper}}%</span><span ng-if="product.vipper == '' ">0%</span>
+                            </div>
+                            <p class="pro_desc">
+                                <label>Description :</label>
+                                <span ng-if="product.prod_description != '' ">{{product.prod_description}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+
+    </div> <!-- container inner ends -->
+</section> 
